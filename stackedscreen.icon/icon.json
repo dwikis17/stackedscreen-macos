@@ -1,0 +1,107 @@
+{
+  "fill" : {
+    "automatic-gradient" : "srgb:0.96094,0.95362,0.96883,1.00000"
+  },
+  "groups" : [
+    {
+      "blur-material" : null,
+      "layers" : [
+        {
+          "fill" : {
+            "automatic-gradient" : "display-p3:0.14626,0.22407,0.96783,1.00000"
+          },
+          "image-name" : "rounded-rectangle-filled-svgrepo-com.svg",
+          "name" : "rounded-rectangle-filled-svgrepo-com",
+          "position" : {
+            "scale" : 0.45,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "name" : "Group",
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    },
+    {
+      "layers" : [
+        {
+          "fill" : {
+            "automatic-gradient" : "display-p3:0.25285,0.96783,0.34806,1.00000"
+          },
+          "image-name" : "rounded-rectangle-filled-svgrepo-com.svg",
+          "name" : "rounded-rectangle-filled-svgrepo-com",
+          "position" : {
+            "scale" : 0.85,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    },
+    {
+      "blur-material" : 0.5,
+      "layers" : [
+        {
+          "fill" : {
+            "automatic-gradient" : "display-p3:0.96783,0.28814,0.20009,1.00000"
+          },
+          "image-name" : "rounded-rectangle-filled-svgrepo-com.svg",
+          "name" : "rounded-rectangle-filled-svgrepo-com",
+          "position" : {
+            "scale" : 1.25,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "layer-color",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.8
+      }
+    },
+    {
+      "layers" : [
+
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}

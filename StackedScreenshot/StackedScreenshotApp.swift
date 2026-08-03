@@ -18,7 +18,7 @@ struct StackedScreenshotApp: App {
                 Text("\(store.captures.count)")
             }
             .accessibilityIdentifier("StackedScreenshotMenuBarItem")
-            .accessibilityLabel("Stacked Screenshot, \(store.captures.count) screenshots stacked")
+            .accessibilityLabel("ClipStack, \(store.captures.count) screenshots stacked")
         }
         .menuBarExtraStyle(.window)
     }

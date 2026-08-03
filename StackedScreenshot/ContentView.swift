@@ -16,7 +16,7 @@ struct ContentView: View {
         VStack(alignment: .leading, spacing: 14) {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 3) {
-                    Text("Stacked Screenshot")
+                    Text("ClipStack")
                         .font(.headline)
 
                     Text(statusText)
@@ -103,7 +103,7 @@ struct ContentView: View {
                 store.clear()
             }
         } message: {
-            Text("This removes the current stack and its clipboard items if Stacked Screenshot still owns the clipboard.")
+            Text("This removes the current stack and its clipboard items if ClipStack still owns the clipboard.")
         }
     }
 

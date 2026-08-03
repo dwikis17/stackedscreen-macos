@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6488284B3020E68D0073D0B6 /* stackedscreen.icon in Resources */ = {isa = PBXBuildFile; fileRef = 6488284A3020E68D0073D0B6 /* stackedscreen.icon */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		646683413020962C00F6E8BD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,11 +31,25 @@
 		646683313020962B00F6E8BD /* StackedScreenshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StackedScreenshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		646683403020962C00F6E8BD /* StackedScreenshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StackedScreenshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6466834A3020962C00F6E8BD /* StackedScreenshotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StackedScreenshotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6488284A3020E68D0073D0B6 /* stackedscreen.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = stackedscreen.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6488284D3020E6AD0073D0B6 /* Exceptions for "StackedScreenshot" folder in "StackedScreenshot" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 646683303020962B00F6E8BD /* StackedScreenshot */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		646683333020962B00F6E8BD /* StackedScreenshot */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6488284D3020E6AD0073D0B6 /* Exceptions for "StackedScreenshot" folder in "StackedScreenshot" target */,
+			);
 			path = StackedScreenshot;
 			sourceTree = "<group>";
 		};
@@ -79,6 +97,7 @@
 				646683433020962C00F6E8BD /* StackedScreenshotTests */,
 				6466834D3020962C00F6E8BD /* StackedScreenshotUITests */,
 				646683323020962B00F6E8BD /* Products */,
+				6488284A3020E68D0073D0B6 /* stackedscreen.icon */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6488284B3020E68D0073D0B6 /* stackedscreen.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,17 +412,18 @@
 		646683553020962C00F6E8BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = stackedscreen;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6YQB49MLC8;
-				ENABLE_APP_SANDBOX = NO;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StackedScreenshot/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ClipStack;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -425,17 +446,18 @@
 		646683563020962C00F6E8BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = stackedscreen;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6YQB49MLC8;
-				ENABLE_APP_SANDBOX = NO;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StackedScreenshot/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ClipStack;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (

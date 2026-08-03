@@ -161,12 +161,30 @@ private final class GlobalHotKey {
         )
 
         let userData = Unmanaged.passUnretained(self).toOpaque()
-        let handler: EventHandlerUPP = { _, _, userData in
-            guard let userData else { return noErr }
+        let handler: EventHandlerUPP = { _, event, userData in
+            guard let event, let userData else { return noErr }
 
             let hotKey = Unmanaged<GlobalHotKey>
                 .fromOpaque(userData)
                 .takeUnretainedValue()
+
+            var pressedHotKeyID = EventHotKeyID()
+                let status = GetEventParameter(
+                    event,
+                    EventParamName(kEventParamDirectObject),
+                    EventParamType(typeEventHotKeyID),
+                    nil,
+                    MemoryLayout<EventHotKeyID>.size,
+                    nil,
+                    &pressedHotKeyID
+                )
+
+            guard status == noErr,
+                  pressedHotKeyID.signature == hotKey.eventHotKeyID.signature,
+                  pressedHotKeyID.id == hotKey.eventHotKeyID.id else {
+                return OSStatus(eventNotHandledErr)
+            }
+
             hotKey.action()
             return noErr
         }

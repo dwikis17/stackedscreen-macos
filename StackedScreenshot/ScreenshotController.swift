@@ -42,6 +42,7 @@ final class ScreenshotStore: ObservableObject {
     private var captureProcess: Process?
     private var didRequestScreenRecordingPermission = false
     private var noticeDismissTask: Task<Void, Never>?
+    private var pasteboardFileDirectory: URL?
 
     init(
         pasteboard: NSPasteboard = .general,
@@ -156,6 +157,7 @@ final class ScreenshotStore: ObservableObject {
 
         captures.removeAll()
         self.lastPasteboardChangeCount = nil
+        cleanupPasteboardFiles()
         showClipboardNotice()
     }
 
@@ -180,34 +182,63 @@ final class ScreenshotStore: ObservableObject {
         guard let lastPasteboardChangeCount,
               pasteboard.changeCount == lastPasteboardChangeCount else {
             lastPasteboardChangeCount = nil
+            cleanupPasteboardFiles()
             return
         }
 
         pasteboard.clearContents()
         self.lastPasteboardChangeCount = pasteboard.changeCount
+        cleanupPasteboardFiles()
     }
 
     private func writeCurrentStackToPasteboard() {
         pasteboard.clearContents()
+        cleanupPasteboardFiles()
 
         guard !captures.isEmpty else {
             lastPasteboardChangeCount = pasteboard.changeCount
             return
         }
 
-        let items = captures.map { capture in
-            let item = NSPasteboardItem()
-            item.setData(capture.pngData, forType: .png)
-            return item
-        }
+        let directory = FileManager.default.temporaryDirectory
+            .appendingPathComponent("clip-stack-\(UUID().uuidString)", isDirectory: true)
 
-        guard pasteboard.writeObjects(items) else {
+        do {
+            try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+
+            let items = try captures.enumerated().map { index, capture in
+                let fileURL = directory.appendingPathComponent("screenshot-\(index + 1).png")
+                try capture.pngData.write(to: fileURL, options: .atomic)
+
+                let item = NSPasteboardItem()
+                item.setString(fileURL.absoluteString, forType: .fileURL)
+                item.setData(capture.pngData, forType: .png)
+                return item
+            }
+
+            guard pasteboard.writeObjects(items) else {
+                try? FileManager.default.removeItem(at: directory)
+                errorMessage = "The screenshots could not be copied to the clipboard."
+                lastPasteboardChangeCount = nil
+                return
+            }
+
+            pasteboardFileDirectory = directory
+        } catch {
+            try? FileManager.default.removeItem(at: directory)
             errorMessage = "The screenshots could not be copied to the clipboard."
             lastPasteboardChangeCount = nil
             return
         }
 
         lastPasteboardChangeCount = pasteboard.changeCount
+    }
+
+    private func cleanupPasteboardFiles() {
+        guard let pasteboardFileDirectory else { return }
+
+        try? FileManager.default.removeItem(at: pasteboardFileDirectory)
+        self.pasteboardFileDirectory = nil
     }
 
     private func showClipboardNotice() {

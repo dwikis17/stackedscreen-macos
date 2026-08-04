@@ -19,8 +19,15 @@ struct StackedScreenshotTests {
 
         #expect(store.captures.count == 2)
         #expect(pasteboard.pasteboardItems?.count == 2)
-        #expect(pasteboard.pasteboardItems?.allSatisfy { $0.types.contains(.png) } == true)
+        #expect(pasteboard.pasteboardItems?.allSatisfy { $0.types.contains(.fileURL) && $0.types.contains(.png) } == true)
         #expect(pasteboard.pasteboardItems?.first?.data(forType: .png) == pngData)
+
+        let fileURLs = pasteboard.pasteboardItems?.compactMap { item -> URL? in
+            guard let value = item.string(forType: .fileURL) else { return nil }
+            return URL(string: value)
+        } ?? []
+        #expect(fileURLs.count == 2)
+        #expect(fileURLs.allSatisfy { FileManager.default.fileExists(atPath: $0.path) })
     }
 
     @Test func removingCaptureRewritesOwnedPasteboard() {
